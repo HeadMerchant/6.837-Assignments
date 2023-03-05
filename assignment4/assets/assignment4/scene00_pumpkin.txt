@@ -1,0 +1,63 @@
+Background {
+    color 0 0 0.1
+    ambient_light 0.1 0.1 0.1
+}
+
+Background {
+    color 0 0 0
+    ambient_light 0.1 0.1 0.1
+}
+
+Camera {
+    center 0 1 5
+    direction 0 -.5 -1
+    up 0 1 0
+    fov 70
+}
+
+Materials {
+    Material {
+        diffuse 1 .6 0
+        specular 0.3 0.3 0.5
+        shininess 0
+    }
+
+    Material {
+        diffuse .9 .9 .9
+        specular .1 .1 .1
+        shininess 10
+    }
+}
+
+Scene {
+    Node {
+        Transform { translate 0 0 0 }
+        Component<Light> {
+            type point
+            color 1 1 .3
+            attenuation .7
+        }
+    }
+    Node {
+        Component<Material> { index 0 }
+        Component<Object> {
+            type mesh
+            obj_file models/jack-o-lantern.obj
+        }
+    }
+    Node {
+        Component<Material> { index 1 }
+        Component<Object> {
+            type plane
+            normal 0 1 0
+            offset -1
+        }
+    }
+    Fog {
+        density 0.3
+        color .7 .7 .7
+    }
+}
+
+
+
